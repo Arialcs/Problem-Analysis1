@@ -10,9 +10,9 @@ namespace PA__1.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly StdData _context;
 
-        public StudentController(ApplicationDbContext context)
+        public StudentController(StdData context)
         {
             _context = context;
         }
@@ -26,12 +26,12 @@ namespace PA__1.Controllers
         // Show Add Student Form
         public IActionResult Create()
         {
-            // Create a SelectList for programs
-            ViewBag.Programs = new SelectList(new string[] { "Computer Programmer", "Software Engineering", "Data Science", "IT Security", "Bachelor of Applied Computer Science" });
+            // Create a list for programs
+            ViewBag.Programs = new SelectList(new string[] { "Computer Science", "Software Engineering", "Data Science", "IT Security", "Business Informatics" });
             return View();
         }
 
-        // Handle Add Student Submission
+        // Add Students 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Student student)
@@ -42,12 +42,12 @@ namespace PA__1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            // Pass the SelectList again in case of validation errors
+            // Pass the List for validation errors
             ViewBag.Programs = new SelectList(new string[] { "Computer Science", "Software Engineering", "Data Science", "IT Security", "Business Informatics" });
             return View(student);
         }
 
-        // Show Edit Student Form
+        // Edit Student 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();

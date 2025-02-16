@@ -3,9 +3,9 @@ using PA__1.Models;
 
 namespace PA__1.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class StdData : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public StdData(DbContextOptions<StdData> options) : base(options) { }
 
         public DbSet<Student> Students { get; set; }
 

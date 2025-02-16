@@ -11,7 +11,7 @@ using PA__1.Data;
 
 namespace PA__1.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(StdData))]
     [Migration("20250211215731_AddGoalToStudent")]
     partial class AddGoalToStudent
     {

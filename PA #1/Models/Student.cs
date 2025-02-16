@@ -31,7 +31,7 @@ namespace PA__1.Models
         [StringLength(500)]
         public string Goal { get; set; }
 
-        // Computed Properties
+        // Calculated Age
         public int Age => DateTime.Now.Year - DateOfBirth.Year;
 
         public string GPAScale
