@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PA__1.Models.Student>
+
+@{
+    ViewData["Title"] = "All Students";
+}
+
+<h2 class="text-center">All Students</h2>
+
+<div class="container mt-4">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>GPA</th>
+                <th>GPA Scale</th>
+                <th>Program</th>
+                <th>Goal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.FirstName @student.LastName</td>
+                    <td>@student.Age</td>
+                    <td>@student.GPA</td>
+                    <td>@student.GPAScale</td>
+                    <td>@student.Program</td>
+                    <td>@student.Goal</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-warning">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p><a asp-action="Create" class="btn btn-success">Add New Student</a></p>
+</div>
+
+<style>
+    /* Custom styling for the table */
+    table {
+        width: 100%;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    th, td {
+        text-align: center;
+        padding: 10px;
+    }
+
+    th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    td {
+        background-color: #f8f9fa;
+    }
+
+    .btn {
+        margin-top: 5px;
+    }
+
+    .btn-sm {
+        font-size: 0.875rem;
+    }
+</style>

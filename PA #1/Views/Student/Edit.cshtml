@@ -1,0 +1,68 @@
+﻿@model PA__1.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2 class="text-center">Edit Student</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" class="container mt-4">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input asp-for="FirstName" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input asp-for="LastName" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="DateOfBirth">Date of Birth:</label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="GPA">GPA:</label>
+        <input asp-for="GPA" type="number" step="0.1" class="form-control" min="1" max="4" required />
+    </div>
+    <div class="form-group">
+        <label for="Program">Program:</label>
+        <select asp-for="Program" asp-items="ViewBag.Programs" class="form-control" style="max-height: 150px; overflow-y: auto;">
+            <option value="">Select Program</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="Goal">Goal:</label>
+        <textarea asp-for="Goal" class="form-control" rows="3">@Model.Goal</textarea>
+    </div>
+
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Update</button>
+    </div>
+</form>
+
+<style>
+    /* Custom CSS for styling form */
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        width: 200px;
+    }
+
+    /* Adjust textarea size and styling */
+    textarea {
+        resize: vertical;
+    }
+</style>
